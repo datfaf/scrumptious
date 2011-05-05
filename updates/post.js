@@ -42,7 +42,9 @@ function(doc, req)
 
 	doc.date = (new Date()).rfc3339();
 
-	return [doc, "Thanks for the new <a href='" + path.show('bookmark', shortened)  + "'>bookmark</a>.\n"];
+        var bookmarkUrl = path.show('bookmark', shortened)
+
+  return [doc, "<head><meta http-equiv=\"refresh\" content=\"2;url=" + bookmarkUrl  + "\"></head>Thanks for the new <a href='" + bookmarkUrl  + "'>bookmark</a>.\n"];
 
 	// Unfortunately, this doesn't work: code returned is 201 with a location header
 	// which means the browser doesn't redirect.
